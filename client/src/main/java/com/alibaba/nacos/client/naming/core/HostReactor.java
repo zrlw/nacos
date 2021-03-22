@@ -168,15 +168,13 @@ public class HostReactor implements Closeable {
         }
         ServiceInfo oldService = serviceInfoMap.get(serviceKey);
         
-        if (pushEmptyProtection) {
-            if (CollectionUtils.isEmpty(serviceInfo.getHosts())) {
-                // empty push, just ignore
-                return oldService;
-            }
-            if (!serviceInfo.validate()) {
-                // error push, just ignore
-                return oldService;
-            }
+        if (pushEmptyProtection && CollectionUtils.isEmpty(serviceInfo.getHosts())) {
+            // empty push, just ignore
+            return oldService;
+        }
+        if (!serviceInfo.validate()) {
+            // error push, just ignore
+            return oldService;
         }
         
         boolean changed = false;
