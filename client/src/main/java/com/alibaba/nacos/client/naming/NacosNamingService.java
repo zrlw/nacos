@@ -127,7 +127,7 @@ public class NacosNamingService implements NamingService {
     }
     
     private boolean isPushEmptyProtect(Properties properties) {
-        boolean pushEmptyProtection = false;
+        boolean pushEmptyProtection = true;
         if (properties != null && StringUtils
                 .isNotEmpty(properties.getProperty(PropertyKeyConst.NAMING_PUSH_EMPTY_PROTECTION))) {
             pushEmptyProtection = ConvertUtils
